@@ -1,20 +1,22 @@
 import sys
 import subprocess
 
-# Install requirements jika belum terinstall
 def install(package):
     subprocess.check_call([sys.executable, "-m", "pip", "install", package])
 
+# Install dependencies
 try:
+    import streamlit
+    import numpy
     import joblib
 except ImportError:
+    install('streamlit')
+    install('numpy')
     install('joblib')
 
 import streamlit as st
+import numpy as np
 import joblib
-import numpy as np
-import streamlit as st
-import numpy as np
 
 import pickle
 
